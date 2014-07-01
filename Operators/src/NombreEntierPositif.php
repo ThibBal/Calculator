@@ -1,10 +1,6 @@
 <?php
 
 
-namespace Calculator\Operators;
-use RuntimeException;
-use DomainException;
-
 
 class NombreEntierPositif {
     protected $i;

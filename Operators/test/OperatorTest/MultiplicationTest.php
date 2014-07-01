@@ -2,16 +2,15 @@
 
 
 use PHPUnit_Framework_TestCase;
-require '../../Multiplication.php';
-require '../../NombreEntierPositif.php';
+
 
 class MultiplicationTest extends PHPUnit_Framework_TestCase {
 
     public function testMultiplicationValid()
     {
-        $nombrei = new \Calculator\Operators\NombreEntierPositif(3);
-        $nombrej = new \Calculator\Operators\NombreEntierPositif(5);
-        $multiplication = new \Operators\Multiplication($nombrei, $nombrej);
+        $nombrei = new NombreEntierPositif(3);
+        $nombrej = new NombreEntierPositif(5);
+        $multiplication = new Multiplication($nombrei, $nombrej);
         $res = $multiplication->compute();
         $this->assertEquals($res, 15);
     }
@@ -22,9 +21,9 @@ class MultiplicationTest extends PHPUnit_Framework_TestCase {
      */
     public function testMultiplicationNegatif()
     {
-        $nombrei = new \Calculator\Operators\NombreEntierPositif(-3);
-        $nombrej = new \Calculator\Operators\NombreEntierPositif(5);
-        $multiplication = new \Calculator\Operators\Multiplication($nombrei, $nombrej);
+        $nombrei = new NombreEntierPositif(-3);
+        $nombrej = new NombreEntierPositif(5);
+        $multiplication = new Multiplication($nombrei, $nombrej);
         $multiplication->compute();
     }
 
@@ -34,9 +33,9 @@ class MultiplicationTest extends PHPUnit_Framework_TestCase {
      */
     public function testMultiplicationString()
     {
-        $nombrei = new \Calculator\Operators\NombreEntierPositif('bonjour');
-        $nombrej = new \Calculator\Operators\NombreEntierPositif(5);
-        $multiplication = new \Calculator\Operators\Multiplication($nombrei, $nombrej);
+        $nombrei = new NombreEntierPositif('bonjour');
+        $nombrej = new NombreEntierPositif(5);
+        $multiplication = new Multiplication($nombrei, $nombrej);
         $multiplication->compute();
     }
 } 

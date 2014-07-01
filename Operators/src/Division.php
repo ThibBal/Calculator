@@ -1,6 +1,6 @@
 <?php
-namespace Calculator\Operators;
-use DomainException;
+
+
 
 class Division{
     protected $num;

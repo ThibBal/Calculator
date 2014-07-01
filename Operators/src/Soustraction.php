@@ -1,7 +1,4 @@
 <?php
-namespace Calculator\Operators;
-use RuntimeException;
-
 
 class Soustraction {
     protected $i;

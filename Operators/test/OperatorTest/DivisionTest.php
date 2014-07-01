@@ -1,15 +1,14 @@
 <?php
 
 use PHPUnit_Framework_TestCase;
-require '../../Division.php';
-require '../../NombreEntierPositif.php';
+
 
 class DivisionTest extends PHPUnit_Framework_TestCase {
     public function testDivisionValid()
     {
-        $nombrei = new \Calculator\Operators\NombreEntierPositif(4);
-        $nombrej = new \Calculator\Operators\NombreEntierPositif(2);
-        $division = new \Calculator\Operators\Division($nombrei, $nombrej);
+        $nombrei = new NombreEntierPositif(4);
+        $nombrej = new NombreEntierPositif(2);
+        $division = new Division($nombrei, $nombrej);
         $res = $division->compute();
         $this->assertEquals($res, 2);
     }
@@ -20,9 +19,9 @@ class DivisionTest extends PHPUnit_Framework_TestCase {
      */
     public function testDivisionNegatif()
     {
-        $nombrei = new \Calculator\Operators\NombreEntierPositif(-3);
-        $nombrej = new \Calculator\Operators\NombreEntierPositif(5);
-        $division = new \Calculator\Operators\Division($nombrei, $nombrej);
+        $nombrei = new NombreEntierPositif(-3);
+        $nombrej = new NombreEntierPositif(5);
+        $division = new Division($nombrei, $nombrej);
         $division->compute();
     }
 
@@ -32,9 +31,9 @@ class DivisionTest extends PHPUnit_Framework_TestCase {
      */
     public function testDivisionString()
     {
-        $nombrei = new \Calculator\Operators\NombreEntierPositif('bonjour');
-        $nombrej = new \Calculator\Operators\NombreEntierPositif(5);
-        $division = new \Calculator\Operators\Division($nombrei, $nombrej);
+        $nombrei = new NombreEntierPositif('bonjour');
+        $nombrej = new NombreEntierPositif(5);
+        $division = new Division($nombrei, $nombrej);
         $division->compute();
     }
 
@@ -44,9 +43,9 @@ class DivisionTest extends PHPUnit_Framework_TestCase {
      */
     public function testDivisionZero()
     {
-        $nombrei = new \Calculator\Operators\NombreEntierPositif(3);
-        $nombrej = new \Calculator\Operators\NombreEntierPositif(0);
-        $division = new \Calculator\Operators\Division($nombrei, $nombrej);
+        $nombrei = new NombreEntierPositif(3);
+        $nombrej = new NombreEntierPositif(0);
+        $division = new Division($nombrei, $nombrej);
         $division->compute();
     }
 } 

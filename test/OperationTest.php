@@ -1,7 +1,7 @@
 <?php 
 namespace MathsTest;
 
-require_once 'Operation.php';
+require_once '../src/Operation.php';
 
 use Maths\Operation as Operation;
 

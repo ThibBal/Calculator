@@ -1,7 +1,7 @@
 <?php 
 namespace MathsTest;
 
-require_once 'Division.php';
+require_once '../src/Division.php';
 
 use Maths\Division as Division;
 

@@ -1,7 +1,7 @@
 <?php 
 namespace MathsTest;
 
-require_once 'Addition.php';
+require_once '../src/Addition.php';
 
 use Maths\Addition as Addition;
 

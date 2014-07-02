@@ -1,7 +1,7 @@
 <?php 
 namespace MathsTest;
 
-require_once 'Substraction.php';
+require_once '../src/Substraction.php';
 
 use Maths\Substraction as Substraction;
 

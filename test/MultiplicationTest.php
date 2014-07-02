@@ -1,7 +1,7 @@
 <?php 
 namespace MathsTest;
 
-require_once 'Multiplication.php';
+require_once '../src/Multiplication.php';
 
 use Maths\Multiplication as Multiplication;
 

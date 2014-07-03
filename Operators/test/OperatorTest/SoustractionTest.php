@@ -1,41 +1,19 @@
 <?php
 
-use PHPUnit_Framework_TestCase;
+namespace OperationTest;
+
+use Maths\Soustraction;
 
 
-class SoustractionTest extends PHPUnit_Framework_TestCase{
+class SoustractionTest extends AbstractOperatorTest {
 
     public function testSoustractionValid()
     {
-        $nombrei = new NombreEntierPositif(4);
-        $nombrej = new NombreEntierPositif(2);
+        $nombrei = $this->getnombreMock(4);
+        $nombrej = $this->getnombreMock(2);
         $soustraction = new Soustraction($nombrei, $nombrej);
         $res = $soustraction->compute();
         $this->assertEquals($res, 2);
-    }
-
-    /**
-     * @expectedException RunTimeException
-     * @expectedExceptionMessage Nombre négatif!
-     */
-    public function testSoustractionNegatif()
-    {
-        $nombrei = new NombreEntierPositif(-3);
-        $nombrej = new NombreEntierPositif(5);
-        $soustraction = new Soustraction($nombrei, $nombrej);
-        $soustraction->compute();
-    }
-
-    /**
-     * @expectedException DomainException
-     * @expectedExceptionMessage Nombre pas entier
-     */
-    public function testSoustractionString()
-    {
-        $nombrei = new NombreEntierPositif('bonjour');
-        $nombrej = new NombreEntierPositif(5);
-        $soustraction = new Soustraction($nombrei, $nombrej);
-        $soustraction->compute();
     }
 
     /**
@@ -44,8 +22,8 @@ class SoustractionTest extends PHPUnit_Framework_TestCase{
      */
     public function testSoustractionResNegatif()
     {
-        $nombrei = new NombreEntierPositif(3);
-        $nombrej = new NombreEntierPositif(5);
+        $nombrei = $this->getnombreMock(3);
+        $nombrej = $this->getnombreMock(5);
         $soustraction = new Soustraction($nombrei, $nombrej);
         $soustraction->compute();
     }

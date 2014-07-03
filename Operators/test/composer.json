@@ -1,0 +1,12 @@
+{
+    "name": "Operation",
+    "description": "operation",
+    "license": "BSD-3-Clause",
+    "keywords": [
+        "maths"
+    ],
+    "require": {
+	"phpunit/phpunit": "4.1.3",
+	"phpunit/php-invoker": "1.1.3"
+    }
+}

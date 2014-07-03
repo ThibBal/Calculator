@@ -1,5 +1,7 @@
 <?php
 
+namespace Maths;
+
 class Soustraction {
     protected $i;
     protected $j;

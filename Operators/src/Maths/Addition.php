@@ -1,8 +1,8 @@
 <?php
 
+namespace Maths;
 
-
-class Multiplication {
+class Addition{
     protected $i;
     protected $j;
 
@@ -12,7 +12,6 @@ class Multiplication {
         $this->j = $j;
     }
 
-
     public function compute()
     {
         try
@@ -21,14 +20,12 @@ class Multiplication {
             $this->i->CheckPositifInteger();
             $this->j->CheckInteger();
             $this->j->CheckPositifInteger();
-            $res = $this->i->getNombre() * $this->j->getNombre();
+            $res = $this->i->getNombre() + $this->j->getNombre();
             return $res;
         }
         catch (Exception $e)
         {
             echo $e->getMessage();
         }
-
     }
-
 } 

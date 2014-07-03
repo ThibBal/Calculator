@@ -1,40 +1,29 @@
 <?php
 
-use PHPUnit_Framework_TestCase;
+namespace OperationTest;
 
+use Maths\Addition;
 
-class AdditionTest extends PHPUnit_Framework_TestCase {
+class AdditionTest extends AbstractOperatorTest {
 
     public function testAdditionValid()
     {
-        $nombrei = new NombreEntierPositif(3);
-        $nombrej = new NombreEntierPositif(5);
+        $nombrei = $this->getnombreMock(3);
+        $nombrej = $this->getnombreMock(5);
+
         $addition = new Addition($nombrei, $nombrej);
-        $res = $addition->compute();
-        $this->assertEquals($res, 8);
+        $this->assertEquals(8, $addition->compute());
     }
 
-    /**
-     * @expectedException RunTimeException
-     * @expectedExceptionMessage Nombre négatif!
-     */
-    public function testAdditionNegatif()
+    public function testExceptionComputeBdNumber()
     {
-        $nombrei = new NombreEntierPositif(-3);
-        $nombrej = new NombreEntierPositif(5);
-        $addition = new Addition($nombrei, $nombrej);
-        $addition->compute();
-    }
+        $nombrei = $this->getnombreMock(3);
+        $nombrej = $this->getnombreMock();
+        $nombrej->expects($this->once())
+                ->method('getNombre')
+                ->willThrowException(new \Exception());
 
-    /**
-     * @expectedException DomainException
-     * @expectedExceptionMessage Nombre pas entier
-     */
-    public function testAdditionString()
-    {
-        $nombrei = new NombreEntierPositif('bonjour');
-        $nombrej = new NombreEntierPositif(5);
         $addition = new Addition($nombrei, $nombrej);
-        $addition->compute();
+        $this->assertEmpty($addition->compute());
     }
 } 

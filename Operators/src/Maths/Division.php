@@ -1,6 +1,6 @@
 <?php
 
-
+namespace Maths;
 
 class Division{
     protected $num;

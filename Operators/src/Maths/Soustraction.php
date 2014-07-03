@@ -2,21 +2,15 @@
 
 namespace Maths;
 
-class Soustraction {
-    protected $i;
-    protected $j;
+use Maths\Exception;
 
-    public function __construct(NombreEntierPositif $i, NombreEntierPositif $j)
-    {
-        $this->i = $i;
-        $this->j = $j;
-    }
+class Soustraction extends AbstractOperation implements OperationInterface {
 
     public  function CheckPositifRes()
     {
         if($this->i->getNombre() < $this->j->getNombre())
         {
-            throw new RuntimeException("Résultat négatif!");
+            throw new Exception\RuntimeException("Résultat négatif!");
         }
     }
 
@@ -24,10 +18,7 @@ class Soustraction {
     {
         try
         {
-            $this->i->CheckInteger();
-            $this->i->CheckPositifInteger();
-            $this->j->CheckInteger();
-            $this->j->CheckPositifInteger();
+            $this->checkNumbers();
             $this->CheckPositifRes();
             $res = $this->i->getNombre() - $this->j->getNombre();
             return $res;

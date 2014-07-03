@@ -2,22 +2,15 @@
 
 namespace Maths;
 
-class Division{
-    protected $num;
-    protected $den;
+use Maths\Exception;
 
-    public function __construct(NombreEntierPositif $num, NombreEntierPositif $den)
+class Division extends AbstractOperation implements OperationInterface{
+
+    public function CheckDenominateur($nbJ)
     {
-        $this->num = $num;
-        $this->den = $den;
-    }
-
-
-    public function CheckDenominateur()
-    {
-        if($this->den->getNombre() == 0)
+        if($nbJ == 0)
         {
-            throw new DomainException("Division par 0 impossible");
+            throw new Exception\DomainException("Division par 0 impossible");
         }
     }
 
@@ -25,12 +18,10 @@ class Division{
     {
         try
         {
-            $this->num->CheckInteger();
-            $this->num->CheckPositifInteger();
-            $this->den->CheckInteger();
-            $this->den->CheckPositifInteger();
-            $this->CheckDenominateur();
-            $res = $this->num->getNombre() / $this->den->getNombre();
+            $this->checkNumbers();
+            $nbJ = $this->j->getNombre();
+            $this->CheckDenominateur($nbJ);
+            $res = $this->i->getNombre() / $nbJ;
             return $res;
         }
         catch (Exception $e)

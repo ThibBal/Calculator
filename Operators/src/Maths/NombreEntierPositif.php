@@ -14,14 +14,14 @@ class NombreEntierPositif {
     public  function CheckPositifInteger()
     {
         if($this->i < 0) {
-            throw new RuntimeException("Nombre négatif!");
+            throw new Exception\RuntimeException("Nombre négatif!");
         }
     }
 
     public function CheckInteger()
     {
         if(!is_integer($this->i)) {
-            throw new DomainException("Nombre pas entier");
+            throw new Exception\DomainException("Nombre pas entier");
         }
     }
 

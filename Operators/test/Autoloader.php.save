@@ -1,0 +1,51 @@
+<?php
+
+require_once(__DIR__.'/vendor/autoload.php');
+
+class Autoloader {
+
+    private static $namespaceRootDir = array();
+
+    public static function registerNamespace($namespace, $dir)
+    {
+        self::$namespaceRootDir[ $namespace ] = $dir;
+    }
+
+    public static function loadClass($className)
+    {
+        require_once(Autoloader::transformClassNameToFilename($className));
+    }
+
+    /**
+     * Transform the class name to a filename
+     *
+     * @param  string $class
+     * @param  string $directory
+     * @return string
+     */
+    protected static function transformClassNameToFilename($class, $directory = null)
+    {
+        if (is_null($directory)) {
+            $directory = dirname(__DIR__);
+        }
+        // $class may contain a namespace portion, in  which case we need
+        // to preserve any underscores in that portion.
+        $matches = array();
+        preg_match('/(?P<namespace>.+\\\)?(?P<class>[^\\\]+$)/', $class, $matches);
+
+        $class     = (isset($matches['class'])) ? $matches['class'] : '';
+        $namespace = (isset($matches['namespace'])) ? $matches['namespace'] : '';
+
+        $namespaceDir = '';
+        if (isset(self::$namespaceRootDir[ $namespace ])) {
+            $namespaceDir = self::$namespaceRootDir[ $namespace ];
+        }
+        return $directory
+        . '/'. $namespaceDir
+        . str_replace('\\', '/', $namespace)
+        . str_replace('_', '/', $class)
+        . '.php';
+    }
+}
+
+spl_autoload_register(array('AutoLoader', 'loadClass'));
